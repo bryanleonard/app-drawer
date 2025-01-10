@@ -1,0 +1,28 @@
+@import '_variables';
+
+/* **************************** */
+
+.header {
+    background: $header-bg;
+    border-bottom: 1px solid $header-border-color; 
+    max-height: $header-max-height;
+    padding: .4rem 0;
+}
+
+.header-logo {
+    height: $header-logo-height;
+    width: auto;
+    border-left: 1px solid $gray-400;
+    padding-left: 1rem;
+    margin-left: 1rem;
+
+    &:first-of-type {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+    }
+}
+
+.header-dropdown {
+    font-size: $base-cta-font-size;
+}

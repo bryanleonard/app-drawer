@@ -1,0 +1,39 @@
+﻿// @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700);
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap');
+@import '_variables';
+@import '_html';
+@import '_header';
+@import '_map';
+@import '_map-filters';
+@import '_map-legend';
+@import '_handle';
+@import '_drawer';
+@import '_toast';
+@import '_btn';
+@import '_popover';
+@import '_utils';
+
+/* **************************** */
+
+// section,
+// div {
+//     border: 1px solid red;
+// }
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: $mq-sm) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: $mq-md) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: $mq-lg) {}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: $mq-xl) {}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: $mq-xxl) {}
+
+

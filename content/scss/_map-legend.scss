@@ -1,0 +1,137 @@
+@import '_variables';
+@import '_mixins';
+
+.legend-resize-btn {
+	background: $map-legend-button-bg;
+	color: $white;
+	padding: 0.462rem;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	margin: 0 !important;
+	position: absolute;
+	top: -1px;
+	right: -1px;
+	font-size: 1.231rem;
+	border: 0;
+	cursor: pointer;
+
+    &:hover,
+    &:focus {
+        outline: none;
+    }
+
+    img {
+        height: 12px;
+        width: auto;
+    }
+}
+
+.gm-style .legend-wrapper {
+	font: $base-font-size arial, helvetica, sans-serif;
+}
+
+.legend-container {
+	background: $white;
+	padding: 0;
+	margin: 0.231rem 0.769rem;
+	border: 1px solid $map-legend-wrapper-color;
+	position: absolute;
+	top: 4.615rem;
+    width: auto;
+	min-height: 1.846rem; //24px
+	min-width: 1.846rem;
+	max-width: 19.231rem; //250px
+
+    &.-two {
+        right: 0;
+    }
+}
+
+.legend-content {
+    overflow-y: auto;
+    padding: 0.462rem 0 0;
+    max-height: 57.692rem;
+
+    .legend-head {
+        padding-right: 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+}
+
+.legend-list {
+	a {
+        display: block;
+        text-decoration: none;
+        padding: 0 0.5rem;
+    }
+    
+    a,
+    a:visited {
+        color: $brand-primary;
+    }
+
+    a:active,
+    a:hover {
+        color: $brand-primary-active;
+        background: $gray-100;
+    }
+
+    li {
+        border-bottom: 1px solid $gray-200;       
+        line-height: 1.8;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    img {
+        vertical-align: middle;
+        height: 1.2rem;
+        margin-left: -.25rem;
+    }
+
+    .legend-count {
+        float: right;
+        margin-left: 0.65rem;
+    }
+
+    .legend-nolink-pad {
+        display: block;
+        padding: 0 0.5rem;
+    }
+}
+
+
+.legend-circle {
+	display: inline-block;
+	@include square(1rem);
+	border-radius: 50%;
+	position: relative;
+	top: .15rem;
+	margin-right: .15rem;
+
+	.bg-blank {
+		background: transparent;
+		border: 1px solid transparent;
+	}
+}
+
+$color-list: $c-12month $c-removal $c-stump $c-brushmow $c-brushspray $c-trim $c-masstrim $c-brushhand 
+	$c-linesafe $c-clearspan $c-notworked $c-readytoaudit $c-auditfailed $c-auditpassed $c-stumpstatus $c-voucher $c-planned;
+
+
+@each $color in $color-list {
+	$name: str-replace('' + $color, '#', '');
+	$border-color: darken($color, 9%);
+
+	.legend-circle.bg-#{$name} {
+		background: $color;
+		border: 1px solid $border-color;
+	}
+}

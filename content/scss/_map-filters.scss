@@ -1,0 +1,35 @@
+@import '_variables';
+
+/* **************************** */
+
+.map-filters {
+    background: $map-filters-bg;
+    border-bottom: 1px solid $map-filters-border-color;
+
+    .form-label {
+        margin-bottom: .25rem;
+        font-weight: $font-weight-semibold;
+        line-height: 1;
+        display: block;
+        margin-left: 1px;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: $mq-sm) {}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: $mq-md) {
+    .map-filter-site-container {
+        border-left: 1px solid $map-filters-border-color;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: $mq-lg) {}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: $mq-xl) {}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: $mq-xxl) {}

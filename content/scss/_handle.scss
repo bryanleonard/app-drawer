@@ -1,0 +1,42 @@
+@import '_variables';
+
+/* **************************** */
+
+.handle {
+    background: $drawer-handle-bg;
+    color: $drawer-handle-color;
+    font-size: 1rem;
+
+    &-open {
+        cursor: pointer;
+    
+        &:hover,
+        &:active {
+            background: $drawer-handle-bg-active;
+        }
+    }
+
+    &-maximize {
+        cursor: pointer;
+        padding-left: $base-pad;
+        padding-right: $base-pad;
+    
+        &:hover,
+        &:active {
+            background: $drawer-handle-bg-active;
+        }
+    }
+
+    &-spacer {
+        padding-left: $base-pad;
+        padding-right: $base-pad;
+    }
+
+    &-filters {
+        border-bottom: 1px solid  lighten($black, 8%);
+    }
+
+    &-details {
+        border-top: 1px solid lighten($black, 8%);
+    }
+}

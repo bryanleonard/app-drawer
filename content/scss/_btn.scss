@@ -1,0 +1,19 @@
+@import '_mixins';
+@import '_variables';
+@import './node_modules/bootstrap/scss/_functions';
+@import './node_modules/bootstrap/scss/_variables';
+@import './node_modules/bootstrap/scss/mixins/_buttons';
+
+/* **************************** */
+
+.btn-brand {
+    @include button-variant($brand-primary, $brand-primary, $white, darken($brand-primary, 10%));
+}
+
+.btn-brand-secondary {
+    @include button-variant($brand-secondary, $brand-secondary, $brand-black, darken($brand-secondary, 10%));
+}
+
+.btn-brand-outline {
+    @include button-outline-variant($brand-primary);
+}

@@ -1,0 +1,70 @@
+@import '_variables';
+@import "./node_modules/bootstrap/scss/functions";
+@import "./node_modules/bootstrap/scss/variables";
+@import "./node_modules/bootstrap/scss/maps";
+@import "./node_modules/bootstrap/scss/mixins";
+@import "./node_modules/bootstrap/scss/utilities";
+
+/* **************************** */
+
+.red {
+    outline: 1px solid $red !important;
+}
+
+.color-warning {
+    color: $yellow;
+}
+
+$utilities : (
+    "base-padding": (
+        property: padding,
+        class: "p",
+        values: (
+            base: $base-pad
+        )
+    ),
+    "base-padding-x": (
+        property: (padding-right, padding-left),
+        class: "px",
+        values: (
+            base: $base-pad
+        )
+    ),
+    "base-padding-y": (
+        property: (padding-top, padding-bottom),
+        class: "py",
+        values: (
+            base: $base-pad
+        )
+    ),
+    "base-padding-t": (
+        property: padding-top,
+        class: "pt",
+        values: (
+            base: $base-pad
+        )
+    ),
+    "base-padding-b": (
+        property: padding-bottom,
+        class: "pb",
+        values: (
+            base: $base-pad
+        )
+    ),
+    "base-padding-s": (
+        property: padding-left,
+        class: "ps",
+        values: (
+            base: $base-pad
+        )
+    ),
+    "base-padding-e": (
+        property: padding-right,
+        class: "pe",
+        values: (
+            base: $base-pad
+        )
+    )
+);
+
+@import "./node_modules/bootstrap/scss/utilities/api";

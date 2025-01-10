@@ -1,0 +1,16 @@
+@import '_variables';
+
+/* **************************** */
+
+.toast {
+    font-size: $font-size;
+
+    .toast-header,
+    .btn {
+        font-size: $base-cta-font-size
+    }
+
+    .toast-header {
+        color:  $brand-black
+    }
+}

@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Template</title>
+	<link rel="stylesheet" href="content/build/lib/lib.min.css">
+	<link rel="stylesheet" href="content/build/css/app.css">
+	<script src="https://kit.fontawesome.com/868437864a.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+	<div class="container-fluid body-container">
+		<header class="row header" id="header" role="heading">
+			<div class="col-6 d-flex align-items-center">
+				<img src="https://placehold.co/600x400?text=Logo" alt="Logo" class="header-logo">
+			</div>
+			<div class="col-6 d-flex align-items-center justify-content-end">
+				<ul class="list-inline m-0 d-flex align-items-center">
+
+					<li class="list-inline-item ml-2">user@email.com</li>
+					<li class="list-inline-item">
+						<nav class="dropdown rounded" role="navigation">
+							<button class="btn btn-link p-1" type="button" data-bs-toggle="dropdown"
+								aria-expanded="false">
+								<i class="fa-solid fa-bars fa-lg"></i>
+							</button>
+							<ul class="dropdown-menu header-dropdown">
+								<li><a class="dropdown-item" href="#">Main Menu</a></li>
+								<li>
+									<hr class="dropdown-divider">
+								</li>
+								<li><a class="dropdown-item" href="#">Logout</a></li>
+							</ul>
+						</nav>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+		<nav class="row py-2 map-filters" id="map-filters" role="menu">
+
+			<div class="col-12 col-md-8">
+				<div class="row">
+					<div class="col-6">
+						<label for="" class="form-label">Circuit</label>
+						<select size="1" class="form-select" id="">
+							<option value="all" selected="" disabled="">Select</option>
+							<option>dropdown option</option>
+						</select>
+					</div>
+					<div class="col-6">
+						<label for="" class="form-label">Work Type</label>
+						<select size="1" class="form-select" id="">
+							<option value="all" selected="" disabled="">Select</option>
+							<option>dropdown option</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row mt-2">
+
+					<div class="col-6 col-sm-3 col-4">
+						<label for="" class="form-label">Work Stage</label>
+						<select size="1" class="form-select" id="">
+							<option value="all" selected="">All</option>
+							<option>dropdown option</option>
+						</select>
+					</div>
+
+					<div class="col-6 col-sm-3 col-3">
+						<label for="thingy" class="form-label">Submitted<span class="d-none d-lg-inline"> to Crews</span>
+							<a href="#" data-bs-toggle="tooltip" data-bs-title="Filter for prescriptions sent to work crews.">
+								<i class="fa-solid fa-circle-info"></i>
+							</a>
+						</label> 
+						<select size="1" class="form-select" id="thingy">
+							<option value="all" selected="" disabled="">Select</option>
+							<option>dropdown option</option>
+						</select>
+					</div>
+
+					<div class="col-6 col-sm-3 col-2 mt-2 mt-sm-0">
+						<label for="" class="form-label">Extents Only
+							<a href="#" data-bs-toggle="tooltip" data-bs-title="Help text describing Extents Only">
+								<i class="fa-solid fa-circle-info"></i>
+							</a>
+						</label>
+						<select size="1" class="form-select" id="">
+							<option value="all" selected="" disabled="">Select</option>
+							<option>dropdown option</option>
+						</select>
+					</div>
+
+					<div class="col-6 col-sm-3 col-3 mt-2 mt-sm-0">
+						<label for="" class="form-label">Inspection Type</label>
+						<select size="1" class="form-select" id="">
+							<option value="all" selected="" disabled="">Select</option>
+							<option>dropdown option</option>
+						</select>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="col-12 col-md-2 mt-2 mt-sm-0">
+				<label for="" class="form-label d-none d-sm-block d-md-block">&nbsp;</label>
+				<button class="btn btn-brand w-100">Refresh<span class="d-none d-lg-inline"> Map</span></button>
+			</div>
+
+			
+			<div class="col-12 col-md-2 mt-2 mt-sm-2 mt-md-0 map-filter-site-container">
+				<label for="" class="form-label">Go to Site</label>
+				<select size="1" class="form-select">
+					<option value="all" selected="" disabled="">Select</option>
+					<option>Site something or other</option>
+				</select>
+			</div>
+		</nav>
+
+		<div id="filter-handle" class="row handle handle-filters">
+			<div class="col-12 text-center align-self-center py-1 py-sm-2 px-5 handle-open">
+				<i class="fa-solid fa-chevron-up fa-lg js-filterHandleIcon"></i>
+				<i class="fa-solid fa-chevron-down fa-lg d-none js-filterHandleIcon"></i>
+			</div>
+		</div>
+
+
+
+
+
+		<section class="row map-container" id="map-container">
+
+			<div class="map" id="map">
+			</div>
+
+			<aside id="legend-work-type" class="legend-container">
+                <div class="legend-resize-btn js-shrinkTrigger" data-targ="legend-work-type-content" id="legend-type-btn">
+					<i class="fa-solid fa-minus js-openCloseIcon" alt="Minimize this legend" data-targ="legend-work-type-content"></i>
+					<i class="fa-solid fa-window-restore js-openCloseIcon d-none" alt="Restore this legend" data-targ="legend-work-type-content"></i>
+                    <!-- <img src="../Content/imgs/minus.svg">
+                    <img src="../Content/imgs/expand.svg"> -->
+                </div>
+				<div id="legend-work-type-content" class="legend-content js-legendContent">
+					<h4 class="ps-2 m-0 mb-2 legend-head">Work Type</h4>
+					<ul class="list-unstyled p-0 mb-0 legend-list">
+						<li><span class="legend-nolink-pad">Laboris irure <span class="legend-count">0</span></span></li>
+						<li><span class="legend-nolink-pad">Irure officia non aliquip. Non aliquip adipiscing consectetur consequat. <span class="legend-count">0</span></li>
+						<li><span class="legend-nolink-pad">Total <span class="legend-count">0</span></span></li>
+					</ul>
+				</div>
+            </aside>
+
+			<aside id="legend-work-status" class="legend-container -two">
+                <div class="legend-resize-btn js-shrinkTrigger" data-targ="legend-work-status-content" id="legend-status-btn">
+					<i class="fa-solid fa-minus js-openCloseIcon" alt="Minimize this legend" data-targ="legend-work-status-content"></i>
+					<i class="fa-solid fa-window-restore d-none js-openCloseIcon" alt="Restore this legend" data-targ="legend-work-status-content"></i>
+                </div>
+				<div id="legend-work-status-content" class="legend-content js-legendContent">
+					<h4 class="ps-2 m-0 mb-2 legend-head">Work Status</h4>
+					<ul class="list-unstyled p-0 mb-0 legend-list">
+						<li class="legend-link" data-worktype="Veniam consectetur">
+							<a href="#" data-worktype="Veniam consectetur" class="legend-link" id="legend_Audit_Failed">
+								<span class="legend-circle bg-ff0000"></span> Veniam consectetur
+								<span class="legend-count">0</span>
+							</a>
+						</li>
+						<li class="legend-link" data-worktype="Est laboris">
+							<a href="#" data-worktype="Est laboris" class="legend-link" id="legend_Audit_Passed">
+								<span class="legend-circle bg-008000"></span>  Est laboris 
+								<span class="legend-count">0</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" data-worktype="All" class="legend-link" id="legend_totalWorkStatus">
+								<span class="legend-circle bg-ffffff}"></span> Total 
+								<span class="legend-count">0</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+            </aside>
+
+		</section>
+
+
+		<section class="" id="drawer-handle-container">
+			<div class="row handle handle-details">
+				<div id="drawer-openclose" class="col-6 offset-3 text-center align-self-center py-1 py-sm-2 px-5 handle-open">
+					<i class="fa-solid fa-chevron-down fa-lg js-drawerHandleDirectionIcon"></i>
+					<i class="fa-solid fa-chevron-up fa-lg d-none js-drawerHandleDirectionIcon"></i>
+				</div>
+				<div id="drawer-maxmin" class="col-3 text-end align-self-center py-1 py-sm-2 handle-maximize">
+					<i class="fa-solid fa-maximize fa-lg js-drawerHandleMaxMinIcon"></i>
+					<i class="fa-solid fa-window-restore fa-lg d-none js-drawerHandleMaxMinIcon"></i>
+				</div>
+			</div>
+		</section>
+
+
+		<aside id="drawer-nav" class="row d-md-none drawer-nav">
+			<ul class="col-12 nav p-0 m-0 justify-content-around fw-semibold">
+				<li class="nav-item">
+					<a class="nav-link drawer-nav-link js-drawerNavLink" data-loc="detail-site" href="https://google.com">Site Info</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link drawer-nav-link js-drawerNavLink" data-loc="detail-work" href="#">Work Status</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link drawer-nav-link js-drawerNavLink" data-loc="detail-audit" href="#">Audit Status</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link drawer-nav-link js-drawerNavLink" data-loc="detail-media" href="#">Media</a>
+				</li>
+			</ul>
+		</aside>
+
+
+		<section class="row drawer-container" id="drawer-container">
+
+			<div class="col-12 drawer" id="drawer">
+
+				<div class="row flex-grow-1">
+
+					<!-- SITE INFO -->
+					<section class="col-12 col-md-4 drawer-col" id="detail-site">
+										
+						<!-- click add photo reveals the add photo form -->
+						<h3 class="text-center drawer-head">
+							Site Info - 
+							<small>
+								<a href="#" class="js-drawerPhotoLink" data-targetid="site-photo-form">Add Photo</a>
+							</small>
+						</h3>
+
+
+						<!-- PHOTO UPLOAD FORM -->
+						<form class="drawer-form mb-0 p-2 d-none" id="site-photo-form">
+							<table class="table table-sm table-borderless mb-0 drawer-table -is-fixed">
+								<tbody class="drawer-tbody">
+									<tr>
+										<th class="align-middle">
+											<span class="d-none d-lg-inline">Add Photo To:</span>
+											<span class="d-inline d-lg-none">Site:</span>
+										</th>
+										<td class="align-middle">
+											<select size="1" class="form-select">
+												<option value="all" selected="" disabled>Select Unit</option>
+												<option>Unit 1: Manual - Side Trim</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<th class="align-middle"><span class="d-none d-xl-inline">Select</span> Image:</th>
+										<td>
+											<input class="form-control" id="" type="file">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="row">
+												<div class="col">
+													<button class="btn btn-small w-100 btn-brand-outline js-cancelPhotoBtn" data-targetid="site-photo-form" id="btn-site-photo-cancel">
+														Cancel<span class="d-none d-xl-inline"> and Close</span>
+													</button>
+												</div>
+												<div class="col">
+													<button class="btn btn-small w-100 btn-brand " id="btn-site-photo-submit">
+														Upload<span class="d-none d-xl-inline"> Photo</span>
+													</button>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+						<!-- /PHOTO FORM -->
+
+
+
+						<!-- SUBMIT FORM -->
+						<form class="p-2 drawer-form" id="plan-form">
+							<table class="table table-sm table-borderless mb-0 drawer-table">
+								<tbody class="drawer-tbody">
+									<tr>
+										<th class="align-middle">Submit:</th>
+										<td class="align-middle">
+											<select size="1" class="form-select" id="">
+												<option value="all" selected="">All Applicable Units</option>
+												<option>Unit 1: Manual - Side Trim</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<button class="btn btn-small w-100 btn-brand " id="btn-submit-to-crew">Submit to Crews</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+						<!-- /SUBMIT FORM -->
+
+
+						<div class="px-base mt-3">
+
+								<table class="table table-sm table-borderless drawer-table -is-fixed">
+
+									<!-- TBODY is the start of a loop to write out all sites -->
+		
+										<tr class="drawer-subhead">
+											<th class="text-start drawer-table-th" colspan="2">Site 1002-1</th>
+										</tr>
+		
+										<tr>
+											<th>Submit Date:</th>
+											<td>12/19/2022</td>
+										</tr>
+										<tr>
+											<th>Review:</th>
+											<td>None</td>
+										</tr>
+										<tr>
+											<th>Location:</th>
+											<td>24088 Aliquip consequat do</td>
+										</tr>
+										<tr>
+											<th>Notify:</th>
+											<td>Phone</td>
+										</tr>
+										<tr>
+											<th>Work Type:</th>
+											<td>Manual</td>
+										</tr>
+										<tr>
+											<th>Unit Type:</th>
+											<td>Side Trim</td>
+										</tr>
+										<tr>
+											<th>Specie:</th>
+											<td>None</td>
+										</tr>
+										<tr>
+											<th>Clean Up:</th>
+											<td>Chip</td>
+										</tr>
+										<tr>
+											<th>Planner:</th>
+											<td>Non Cillum</td>
+										</tr>
+										<tr>
+											<th>Date:</th>
+											<td>12/15/2024</td>
+										</tr>
+										<tr>
+											<th>Device:</th>
+											<td>732Minim</td>
+										</tr>
+										<tr>
+											<th>Commments:</th>
+											<td>
+												<ul class="drawer-comments-ul">
+													<li>Quis exercitation, cupidatat aliquip eu ad in. Aliquip eu ad in quis nostrud in.</li>
+													<li>Consequat amet, reprehenderit qui esse cillum amet.</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+		
+								<table class="table table-sm table-borderless drawer-table -is-fixed">
+									<tbody class="drawer-tbody">
+										<tr class="drawer-subhead">
+											<th class="text-start drawer-table-th" colspan="2">Site ID: 1002-2</th>
+										</tr>
+		
+										<tr>
+											<th>Submit Date:</th>
+											<td>12/19/2024</td>
+										</tr>
+										<tr>
+											<th>Review:</th>
+											<td>None</td>
+										</tr>
+										<tr>
+											<th>Location:</th>
+											<td>24088 Aliquip consequat do</td>
+										</tr>
+										<tr>
+											<th>Notify:</th>
+											<td>Phone</td>
+										</tr>
+										<tr>
+											<th>Work Type:</th>
+											<td>Bucket</td>
+										</tr>
+										<tr>
+											<th>Unit Type:</th>
+											<td>Side Trim</td>
+										</tr>
+										
+										<tr>
+											<th>Planner:</th>
+											<td>Texlore consectetur.</td>
+										</tr>
+										<tr>
+											<th>Date:</th>
+											<td>12/15/2024</td>
+										</tr>
+										<tr>
+											<th>Device:</th>
+											<td>Supid23</td>
+										</tr>
+										<tr>
+											<th>Commments:</th>
+											<td>
+												<ul class="drawer-comments-ul">
+													<li>Est nulla ad, magna reprehenderit ut. Magna, reprehenderit ut magna do.</li>
+													<li>Quis ipsum, amet ut elit fugiat.</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+		
+		
+		
+									<tbody class="drawer-tbody">
+		
+										<tr class="drawer-subhead">
+											<th class="text-start drawer-table-th" colspan="2">Site ID: 1002-1</th>
+										</tr>
+										<tr>
+											<th>Submit Date:</th>
+											<td>12/19/2024</td>
+										</tr>
+										<tr>
+											<th>Review:</th>
+											<td>None</td>
+										</tr>
+										<tr>
+											<th>Location:</th>
+											<td>24088 Aliquip consequat do</td>
+										</tr>
+										<tr>
+											<th>Notify:</th>
+											<td>Phone</td>
+										</tr>
+										<tr>
+											<th>Work Type:</th>
+											<td>Manual</td>
+										</tr>
+										<tr>
+											<th>Unit Type:</th>
+											<td>Brush Hand Cut</td>
+										</tr>
+										<tr>
+											<th>Planner:</th>
+											<td>Sit adipiscing</td>
+										</tr>
+										<tr>
+											<th>Date:</th>
+											<td>12/15/2022</td>
+										</tr>
+										<tr>
+											<th>Device:</th>
+											<td>71PISC</td>
+										</tr>
+										<tr>
+											<th>Commments:</th>
+											<td>
+												<ul class="drawer-comments-ul mb-0">
+													<li>Est veniam sit minim.</li>
+													<li>Sunt sed cillum, ipsum. Laborum esse, in consectetur officia sunt do.</li>
+													<li>Velit nostrud eu sit, sint. Dolor laborum sint eu mollit, tempor mollit.</li>
+												</ul>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+
+						</div><!-- /px-base-->
+
+					</section>
+
+
+					<!-- ACTION -->
+					<section class="col-12 col-md-3 drawer-col" id="detail-work">
+
+						<h3 class="text-center drawer-head">
+							Work Status - 
+							<small>
+								<a href="#" class="js-drawerPhotoLink" data-targetid="contractor-photo-form">Add Photo</a>
+							</small>
+						</h3>
+
+						<!-- CONTRACTOR PHOTO UPLOAD FORM - Displayed when Add Photo is clicked -->
+						<form class="drawer-form mb-0 p-2 d-none" id="contractor-photo-form">
+							<table class="table table-sm table-borderless mb-0 drawer-table -is-fixed">
+								<tbody class="drawer-tbody">
+									<tr>
+										<th class="align-middle">
+											<span class="d-none d-lg-inline">Add Photo To:</span>
+											<span class="d-inline d-lg-none">Site:</span>
+										</th>
+										<td class="align-middle">
+											<select size="1" class="form-select">
+												<option value="all" selected="" disabled>Select Unit</option>
+												<option>Unit 1: Manual - Side Trim</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<th class="align-middle"><span class="d-none d-xl-inline">Select</span> Image:</th>
+										<td>
+											<input class="form-control" id="" type="file">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="row">
+												<div class="col">
+													<button class="btn btn-small w-100 btn-brand-outline js-cancelPhotoBtn" data-targetid="contractor-photo-form" id="btn-contractor-photo-cancel">
+														Cancel<span class="d-none d-xl-inline"> and Close</span>
+													</button>
+												</div>
+												<div class="col">
+													<button class="btn btn-small w-100 btn-brand" id="btn-contractor-photo-submit">
+														Upload<span class="d-none d-xl-inline"> Photo</span>
+													</button>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+						<!-- /CONTACTOR ADD PHOTO FORM -->
+
+
+						<!-- CONTRACTOR SUBMIT FORM -->
+						<form class="drawer-form p-2" id="contractor-form">
+							<table class="table table-sm table-borderless mb-0 drawer-table">
+								<tbody class="drawer-tbody">
+									<tr>
+										<th class="align-middle">Submit:</th>
+										<td class="align-middle"><select size="1" class="form-select" id="frmContractorWorkSelect"
+												name="contractorApplyTo" data-hdid="302" data-siteid="15"
+												data-auditstatus="N/A">
+												<option value="all" selected="">All Applicable Units</option>
+												<option>Unit 1: Manual - Side Trim</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<button class="btn btn-small w-100 btn-brand " id="btnSaveContractorWork">Mark As Worked</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+						<!-- /CONTRACTOR SUBMIT FORM -->
+
+						<div class="px-base mt-3">
+
+							<table class="table table-sm table-borderless drawer-table -is-fixed">
+								<tbody class="drawer-tbody">
+									<tr class="drawer-subhead">
+										<th class="text-start drawer-table-th" colspan="2">Site 1002-1</th>
+									</tr>
+	
+									<tr>
+										<th>Work Type:</th>
+										<td>Manual</td>
+									</tr>
+									<tr>
+										<th>Unit Type:</th>
+										<td>Side Trim</td>
+									</tr>
+									<tr>
+										<th>Contractor:</th>
+										<td>None</td>
+									</tr>
+									<tr>
+										<th>Work Date:</th>
+										<td>None</td>
+									</tr>
+									</tbody>
+							</table>
+
+							<table class="table table-sm table-borderless drawer-table -is-fixed">
+								<tbody class="drawer-tbody">
+									<tr class="drawer-subhead">
+										<th class="text-start drawer-table-th" colspan="2">Site 1002-1</th>
+									</tr>
+	
+									<tr>
+										<th>Work Type:</th>
+										<td>Manual</td>
+									</tr>
+									<tr>
+										<th>Unit Type:</th>
+										<td>Removal</td>
+									</tr>
+									<tr>
+										<th>Contractor:</th>
+										<td>None</td>
+									</tr>
+									<tr>
+										<th>Work Date:</th>
+										<td>None</td>
+									</tr>
+									</tbody>
+									</table>
+									
+									<table class="table table-sm table-borderless drawer-table -is-fixed">
+										<tbody class="drawer-tbody">
+											<tr class="drawer-subhead">
+												<th class="text-start drawer-table-th" colspan="2">Site 1002-1</th>
+											</tr>
+									
+											<tr>
+												<th>Work Type:</th>
+												<td>Manual</td>
+											</tr>
+											<tr>
+												<th>Unit Type:</th>
+												<td>Brush Hand Cut</td>
+											</tr>
+											<tr>
+												<th>Contractor:</th>
+												<td>None</td>
+											</tr>
+											<tr>
+												<th>Work Date:</th>
+												<td>None</td>
+											</tr>
+										</tbody>
+							</table>
+
+						</div>
+
+					</section>
+
+
+					<!-- AUDIT -->
+					<section class="col-12 col-md-3 drawer-col" id="detail-audit">
+						
+						<h3 class="text-center drawer-head">
+							Audit Results - 
+							<small>
+								<a href="#" class="js-drawerPhotoLink " data-targetid="audit-photo-form">Add Photo</a>
+							</small>
+						</h3>
+
+						<!-- AUDIT PHOTO UPLOAD FORM - Displayed when Add Photo is clicked -->
+						<form class="drawer-form mb-0 p-2 d-none" id="audit-photo-form">
+							<table class="table table-sm table-borderless mb-0 drawer-table -is-fixed">
+								<tbody class="drawer-tbody">
+									<tr>
+										<th class="align-middle">
+											<span class="d-none d-lg-inline">Add Photo To:</span>
+											<span class="d-inline d-lg-none">Site:</span>
+										</th>
+										<td class="align-middle">
+											<select size="1" class="form-select">
+												<option value="all" selected="" disabled>Select Unit</option>
+												<option>Unit 1: Manual - Side Trim</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<th class="align-middle"><span class="d-none d-xl-inline">Select</span> Image:</th>
+										<td>
+											<input class="form-control" id="" type="file">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="row">
+												<div class="col">
+													<button class="btn btn-small w-100 btn-brand-outline js-cancelPhotoBtn" data-targetid="audit-photo-form" id="btn-audit-photo-cancel">
+														Cancel<span class="d-none d-xl-inline"> and Close</span>
+													</button>
+												</div>
+												<div class="col">
+													<button class="btn btn-small w-100 btn-brand" id="btn-audit-photo-submit">
+														Upload<span class="d-none d-xl-inline"> Photo</span>
+													</button>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+						<!-- /AUDIT PHOTO FORM -->
+
+
+						<!-- AUDIT SUBMIT FORM -->
+						<form class="drawer-form mb-0 p-2" id="audit-form">
+							<table class="table table-sm table-borderless mb-0 drawer-table">
+								<tbody class="drawer-tbody">
+									<tr>
+										<th class="align-middle">Submit:</th>
+										<td class="align-middle">
+											<select size="1" class="form-select" id="">
+												<option value="all" selected="">All Applicable Units</option>
+												<option>Unit 1: Manual - Side Trim</option>
+											</select>
+										</td>
+									</tr>
+									<tr>
+										<th class="pt-2">Comments:</th>
+										<td>
+											<textarea class="form-control drawer-comment" id=""></textarea>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<button class="btn btn-small w-100 btn-brand " id="btn-submit-audit">Submit Audit</button>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+						<!-- /AUDIT SUBMIT FORM -->
+
+
+						<div class="px-base mt-3">
+
+							<table class="table table-sm table-borderless drawer-table -is-fixed">
+
+								<!-- TBODY is the start of a loop to write out all sites -->
+								<tbody class="drawer-tbody">
+									<tr class="drawer-subhead">
+										<th class="text-start drawer-table-th" colspan="2">Site 1002-1</th>
+									</tr>
+									<tr>
+										<th>Work Type:</th>
+										<td>Bucket</td>
+									</tr>
+									<tr>
+										<th>Unit Type:</th>
+										<td>Removal</td>
+									</tr>
+									<tr>
+										<th>Auditor:</th>
+										<td>None</td>
+									</tr>
+									<tr>
+										<th>Date:</th>
+										<td>None</td>
+									</tr>
+									<tr>
+										<th>Results:</th>
+										<td>None</td>
+									</tr>
+									<tr>
+										<th>Comments:</th>
+										<td>None</td>
+									</tr>
+									</tbody>
+									<!-- /TBODY -->
+
+										</table>
+										<table class="table table-sm table-borderless drawer-table -is-fixed">
+											<tr class="drawer-subhead">
+												<th class="text-start drawer-table-th" colspan="2">Site 1002-2</th>
+											</tr>
+											<tr>
+												<th>Work Type:</th>
+												<td>Bucket</td>
+											</tr>
+											<tr>
+												<th>Unit Type:</th>
+												<td>Removal</td>
+											</tr>
+											<tr>
+												<th>Auditor:</th>
+												<td>None</td>
+											</tr>
+											<tr>
+												<th>Date:</th>
+												<td>None</td>
+											</tr>
+											<tr>
+												<th>Results:</th>
+												<td>None</td>
+											</tr>
+											<tr>
+												<th>Comments:</th>
+												<td>None</td>
+											</tr>
+											</tbody>
+										
+										</table>
+
+						</div>
+
+					</section>
+
+
+					<!-- MEDIA -->
+					<section class="col-12 col-md-2 drawer-col drawer-thumbs" id="detail-media">
+
+						<h3 class="text-center drawer-head">
+							Media - <small><a href="viewall/">View All</a></small>
+						</h3>
+						
+						<div class="px-base mt-3">
+
+							<!-- If no media -->
+							<!-- <p>No media has been added.</p> -->
+							<!-- else -->
+
+							<!-- PLANNING pics -->
+							<table class="table table-sm table-borderless drawer-table">
+								<tbody class="drawer-tbody">
+									<tr class="drawer-subhead">
+										<th class="text-start drawer-table-th">Planning</th>
+									</tr>
+
+									<tr>
+										<td class="text-center">
+											<ul class="list-unstyled mt-1">
+												<li><img src="https://placehold.co/600x400?text=Image" class="img-thumbnail"></li>
+												<li><img src="https://placehold.co/600x400?text=Image" class="img-thumbnail"></li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<!-- WORK pics -->
+							<table class="table table-sm table-borderless drawer-table">
+								<tbody class="drawer-tbody">
+									<tr class="drawer-subhead">
+										<th class="text-start drawer-table-th">Work</th>
+									</tr>
+
+									<tr>
+										<td class="text-center">
+											<ul class="list-unstyled">
+												<li><img src="https://placehold.co/600x400?text=Image" class="img-thumbnail"></li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+							<!-- AUDIT pics -->
+							<table class="table table-sm table-borderless drawer-table">
+								<tbody class="drawer-tbody">
+									<tr class="drawer-subhead">
+										<th class="text-start drawer-table-th">Audit</th>
+									</tr>
+
+									<tr>
+										<td class="text-center">
+											<ul class="list-unstyled">
+												<li><img src="https://placehold.co/600x400?text=Image" class="img-thumbnail"></li>
+												<li><img src="https://placehold.co/600x400?text=Image" class="img-thumbnail"></li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+	
+						</div><!-- /px-base -->
+						
+					</section>
+
+				</div><!-- /row -->
+
+
+			</div>
+
+
+		</section>
+
+
+	</div><!-- /body-container -->
+
+
+	<script src="content/build/lib/lib.min.js"></script>
+	<script src="content/build/js/app.js"></script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", () => {
+			DrawerApp.init();
+		});
+	</script>
+
+</body>
+
+</html>

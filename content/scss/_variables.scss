@@ -1,0 +1,108 @@
+
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$blue:    #0d6efd !default;
+$indigo:  #6610f2 !default;
+$purple:  #6f42c1 !default;
+$pink:    #d63384 !default;
+$red:     #dc3545 !default;
+$orange:  #fd7e14 !default;
+$yellow:  #ffc107 !default;
+$green:   #198754 !default;
+$teal:    #20c997 !default;
+$cyan:    #0dcaf0 !default;
+
+
+// LEGEND COLORS - Can be changed, placeholder functionality
+$c-12month: #f6e0b5;
+$c-removal: #8b0000;
+$c-stump: #ffc0cb;
+$c-brushmow: #99aab5;
+$c-brushspray: #a67c00;
+$c-trim: #ccff66;
+$c-masstrim: #7289da;
+$c-brushhand: #43e8d8;
+$c-linesafe: #ea4e9d;
+$c-clearspan: #00ff00;
+$c-notworked: #ffa500;
+$c-readytoaudit: #ffff00;
+$c-auditfailed: #ff0000;
+$c-auditpassed: #008000;
+$c-stumpstatus: #800080;
+$c-voucher: #0e2f44;
+$c-planned: #ffffff;
+
+
+
+
+
+// Variables should follow the `$component-state-property-size` formula for
+// consistent naming. Ex: $nav-link-disabled-color and $modal-content-box-shadow-xs.
+
+$base-pad: 12px;
+$base-font-size: 13px;
+$base-cta-font-size: 1.077rem;
+
+$brand-black: #232323;
+$brand-primary: #0079c1;
+$brand-primary-active: #005fa0;
+$brand-secondary: #e0e866;
+$brand-secondary-active: #c6cd5a;
+
+// $font-size: 1rem; //.875rem; //16px
+// $font-size-sm: .8125rem; //13px
+$font-size: 1rem; //13px
+$font-stack: "Roboto", "Helvetica Neue", Arial, Helvetica, sans-serif; //"Roboto", 
+$font-weight-normal: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$header-bg: $white;
+$header-max-height: 3.077rem; //39px
+$header-logo-height: 1.923rem; //25px //1.25rem; //20px
+$header-border-color: $gray-400;
+
+
+$map-filters-bg: $gray-200;
+$map-legend-button-bg: $brand-black;
+$map-legend-wrapper-color: $brand-black;
+
+$map-filters-border-color: $gray-400;
+$map-bg: #e8e7e3;
+
+$drawer-handle-bg: $gray-900;
+$drawer-handle-bg-active: $gray-800;
+$drawer-handle-color: $white;
+
+$drawer-nav-bg: $gray-200;
+$drawer-nav-border-color: $gray-400;
+$drawer-nav-link-bg: $drawer-nav-bg;
+$drawer-nav-link-bg-active: $white;
+$drawer-nav-link-active-border-color: $gray-400;
+
+$drawer-bg: $white;
+$drawer-color: $brand-black;
+$drawer-border-color: $gray-400;
+
+$drawer-height-open: 22rem;
+$drawer-height-max: 100%;
+$drawer-height-closed: 0;
+
+
+$mq-sm: 576px;
+$mq-md: 768px;
+$mq-lg: 992px;
+$mq-xl: 1200px;
+$mq-xxl: 1400px;
+

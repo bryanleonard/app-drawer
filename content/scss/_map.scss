@@ -1,0 +1,16 @@
+@import '_variables';
+
+/* **************************** */
+
+.map-container {
+    flex: 1;
+    overflow-x: auto;
+    background: $map-bg;
+    position: relative;
+}
+
+.map {
+    height: 100%;
+    position: relative;
+}
+
