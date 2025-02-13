@@ -14,4 +14,4 @@ This will create the build file and launch a page at [http://localhost:3000](htt
 
 ## Live demo
 
-Live demo available at [https://forcequit.io/app-drawer](https://forcequit.io/app-drawer)
+Live demo available at [https://bryanleonard.github.io/app-drawer](https://bryanleonard.github.io/app-drawer/)
